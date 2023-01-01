@@ -1,0 +1,45 @@
+:root {
+  --calculator-width: 350px;
+}
+
+#calculator {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+
+#display {
+  width: 350px;
+  height: 60px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+#main-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+#digits-section, #operators-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#digits-section {
+  width: 249px;
+  flex-direction: row-reverse;
+}
+
+#operators-section {
+  width: 83px;
+}
+
+button {
+  width: 83px;
+  height: 34px;
+  box-sizing: border-box;
+}
+
+.btn-ac {
+  margin-left: auto;
+}
