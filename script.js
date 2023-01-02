@@ -67,6 +67,14 @@ divideButton.addEventListener("click", () => {
   display.textContent += "/";
 });
 
+let dotButton = document.querySelector("#btn-dot");
+dotButton.addEventListener("click", () => {
+  if (calculatorValue.split("")[calculatorValue.length - 1] != ".") {
+    calculatorValue += ".";
+    display.textContent += ".";
+  }
+});
+
 let equalsButton = document.querySelector("#btn-equals"); 
 equalsButton.addEventListener("click", () => {
   equation.push(calculatorValue);
@@ -74,11 +82,11 @@ equalsButton.addEventListener("click", () => {
     equation[i + 2] = operate(equation[i+1], equation[i], equation[i+2]);
     console.log(equation);
   }
-  display.textContent = equation[equation.length - 1];
+  display.textContent = +equation[equation.length - 1].toFixed(2);
   calculatorValue = equation[equation.length - 1];
-  console.log(calculatorValue);
   equation = [];
   console.log(equation);
+  console.log(calculatorValue);
 });
 
 let clearButton = document.querySelector("#btn-ac");
