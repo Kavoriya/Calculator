@@ -52,4 +52,8 @@ equalsButton.addEventListener("click", () => {
     console.log(equation);
   }
   display.textContent = equation[equation.length - 1];
+  calculatorValue = equation[equation.length - 1];
+  console.log(calculatorValue);
+  equation = [];
+  console.log(equation);
 });
