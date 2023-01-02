@@ -41,7 +41,30 @@ addButton.addEventListener("click", () => {
   calculatorValue = "";
   equation.push(add);
   display.textContent += "+";
-  console.log(equation);
+});
+
+let subtractButton = document.querySelector("#btn-subtract"); 
+subtractButton.addEventListener("click", () => { 
+  equation.push(calculatorValue);
+  calculatorValue = "";
+  equation.push(subtract);
+  display.textContent += "-";
+});
+
+let multiplyButton = document.querySelector("#btn-multiply"); 
+multiplyButton.addEventListener("click", () => { 
+  equation.push(calculatorValue);
+  calculatorValue = "";
+  equation.push(multiply);
+  display.textContent += "*";
+});
+
+let divideButton = document.querySelector("#btn-divide"); 
+divideButton.addEventListener("click", () => { 
+  equation.push(calculatorValue);
+  calculatorValue = "";
+  equation.push(divide);
+  display.textContent += "/";
 });
 
 let equalsButton = document.querySelector("#btn-equals"); 
@@ -56,4 +79,11 @@ equalsButton.addEventListener("click", () => {
   console.log(calculatorValue);
   equation = [];
   console.log(equation);
+});
+
+let clearButton = document.querySelector("#btn-ac");
+clearButton.addEventListener("click", () => {
+  equation = [];
+  calculatorValue = "";
+  display.textContent = "";
 });
