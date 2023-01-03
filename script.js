@@ -92,15 +92,7 @@ dotButton.addEventListener("click", () => {
 let equalsButton = document.querySelector("#btn-equals"); 
 equalsButton.addEventListener("click", () => {
   equation.push(calculatorValue);
-  for (let i = 0; i < equation.length-1; i = i + 2) {
-    equation[i + 2] = operate(equation[i+1], equation[i], equation[i+2]);
-    console.log(equation);
-  }
-  display.textContent = +equation[equation.length - 1].toFixed(2);
-  calculatorValue = equation[equation.length - 1];
-  equation = [];
-  console.log(equation);
-  console.log(calculatorValue);
+  makeCalculations();
 });
 
 let clearButton = document.querySelector("#btn-ac");
@@ -109,3 +101,17 @@ clearButton.addEventListener("click", () => {
   calculatorValue = "";
   display.textContent = "";
 });
+
+function makeCalculations() {
+  for (let i = 0; i < equation.length-1; i = i + 2) {
+    equation[i + 2] = operate(equation[i+1], equation[i], equation[i+2]);
+  };
+  if (equation[equation.length - 1] == Infinity) {
+    display.textContent = "Boom!";
+    calculatorValue = Infinity;
+  } else {
+    display.textContent = +equation[equation.length - 1].toFixed(2);
+    calculatorValue = equation[equation.length - 1];
+  };
+  equation = [];
+};
