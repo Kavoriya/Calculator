@@ -1,28 +1,9 @@
-function add(a, b) {
-  return a + b;
-}
-
-function subtract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-function divide(a, b) {
-  return a / b;
-}
-
-function operate(func, a, b) {
-  return func(+a, +b);
-}
-
 let calculatorValue = "";
 let display = document.querySelector("#display");
 let equation = []; // this array holds numbers and operators
-let lastIsAnOperator = false;
+let lastIsAnOperator = false; //  user can't add operators twice in a row
 
+//assign digits to buttons
 let digits = [];
 let domDigits = document.getElementsByClassName("digit");
 [...domDigits].forEach(item => {
@@ -59,7 +40,7 @@ divideButton.addEventListener("click", () => {
 
 let dotButton = document.querySelector("#btn-dot");
 dotButton.addEventListener("click", () => {
-  if (calculatorValue.split("")[calculatorValue.length - 1] != ".") {
+  if (calculatorValue.split("")[calculatorValue.length - 1] != ".") { //user can't add . twice in a row
     calculatorValue += ".";
     display.textContent += ".";
   }
@@ -107,4 +88,24 @@ function getOperatorSymbol(operator) {
   if (operator == subtract) return "-";
   if (operator == multiply) return "*";
   if (operator == divide) return "/";
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  return a / b;
+}
+
+function operate(func, a, b) {
+  return func(+a, +b);
 }
