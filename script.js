@@ -1,7 +1,7 @@
 let calculatorValue = "";
 let display = document.querySelector("#display");
 let equation = []; // this array holds numbers and operators
-let lastIsAnOperator = false; //  user can't add operators twice in a row
+let lastIsAnOperator = true; //  user can't add operators twice in a row
 
 //assign digits to buttons
 let digits = [];
@@ -48,8 +48,10 @@ dotButton.addEventListener("click", () => {
 
 let equalsButton = document.querySelector("#btn-equals"); 
 equalsButton.addEventListener("click", () => {
-  equation.push(calculatorValue);
-  makeCalculations();
+  if ((equation.length % 2 == 0) && (equation.length != 0)) {
+    equation.push(calculatorValue);
+    makeCalculations();
+  };
 });
 
 let clearButton = document.querySelector("#btn-ac");
@@ -57,6 +59,7 @@ clearButton.addEventListener("click", () => {
   equation = [];
   calculatorValue = "";
   display.textContent = "";
+  lastIsAnOperator = true;
 });
 
 function makeCalculations() {
