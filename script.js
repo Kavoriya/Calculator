@@ -21,6 +21,7 @@ function operate(func, a, b) {
 let calculatorValue = "";
 let display = document.querySelector("#display");
 let equation = []; // this array holds numbers and operators
+let lastIsAnOperator = false;
 
 let digits = [];
 let domDigits = document.getElementsByClassName("digit");
@@ -32,39 +33,52 @@ digits.forEach(digit => {
   digit.addEventListener("click", () => {
     calculatorValue += digit.value;
     display.textContent += digit.value;
+    lastIsAnOperator = false;
   })
 });
 
 let addButton = document.querySelector("#btn-add"); 
 addButton.addEventListener("click", () => { 
-  equation.push(calculatorValue);
-  calculatorValue = "";
-  equation.push(add);
-  display.textContent += "+";
+  if (!lastIsAnOperator) {
+    equation.push(calculatorValue);
+    calculatorValue = "";
+    equation.push(add);
+    display.textContent += "+";
+    lastIsAnOperator = true;
+  };
 });
 
 let subtractButton = document.querySelector("#btn-subtract"); 
-subtractButton.addEventListener("click", () => { 
-  equation.push(calculatorValue);
-  calculatorValue = "";
-  equation.push(subtract);
-  display.textContent += "-";
+subtractButton.addEventListener("click", () => {
+  if (!lastIsAnOperator) { 
+    equation.push(calculatorValue);
+    calculatorValue = "";
+    equation.push(subtract);
+    display.textContent += "-";
+    lastIsAnOperator = true;
+  };
 });
 
 let multiplyButton = document.querySelector("#btn-multiply"); 
 multiplyButton.addEventListener("click", () => { 
-  equation.push(calculatorValue);
-  calculatorValue = "";
-  equation.push(multiply);
-  display.textContent += "*";
+  if (!lastIsAnOperator) {
+    equation.push(calculatorValue);
+    calculatorValue = "";
+    equation.push(multiply);
+    display.textContent += "*";
+    lastIsAnOperator = true;
+  };
 });
 
 let divideButton = document.querySelector("#btn-divide"); 
 divideButton.addEventListener("click", () => { 
-  equation.push(calculatorValue);
-  calculatorValue = "";
-  equation.push(divide);
-  display.textContent += "/";
+  if (!lastIsAnOperator) {
+    equation.push(calculatorValue);
+    calculatorValue = "";
+    equation.push(divide);
+    display.textContent += "/";
+    lastIsAnOperator = true;
+  };
 });
 
 let dotButton = document.querySelector("#btn-dot");
@@ -78,7 +92,7 @@ dotButton.addEventListener("click", () => {
 let equalsButton = document.querySelector("#btn-equals"); 
 equalsButton.addEventListener("click", () => {
   equation.push(calculatorValue);
-  for (let i = 0; i < equation.length-1; i = i + 2) { 
+  for (let i = 0; i < equation.length-1; i = i + 2) {
     equation[i + 2] = operate(equation[i+1], equation[i], equation[i+2]);
     console.log(equation);
   }
