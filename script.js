@@ -39,46 +39,22 @@ digits.forEach(digit => {
 
 let addButton = document.querySelector("#btn-add"); 
 addButton.addEventListener("click", () => { 
-  if (!lastIsAnOperator) {
-    equation.push(calculatorValue);
-    calculatorValue = "";
-    equation.push(add);
-    display.textContent += "+";
-    lastIsAnOperator = true;
-  };
+  appendOperator(add);
 });
 
 let subtractButton = document.querySelector("#btn-subtract"); 
 subtractButton.addEventListener("click", () => {
-  if (!lastIsAnOperator) { 
-    equation.push(calculatorValue);
-    calculatorValue = "";
-    equation.push(subtract);
-    display.textContent += "-";
-    lastIsAnOperator = true;
-  };
+  appendOperator(subtract);
 });
 
 let multiplyButton = document.querySelector("#btn-multiply"); 
 multiplyButton.addEventListener("click", () => { 
-  if (!lastIsAnOperator) {
-    equation.push(calculatorValue);
-    calculatorValue = "";
-    equation.push(multiply);
-    display.textContent += "*";
-    lastIsAnOperator = true;
-  };
+  appendOperator(multiply);
 });
 
 let divideButton = document.querySelector("#btn-divide"); 
 divideButton.addEventListener("click", () => { 
-  if (!lastIsAnOperator) {
-    equation.push(calculatorValue);
-    calculatorValue = "";
-    equation.push(divide);
-    display.textContent += "/";
-    lastIsAnOperator = true;
-  };
+  appendOperator(divide);
 });
 
 let dotButton = document.querySelector("#btn-dot");
@@ -115,3 +91,20 @@ function makeCalculations() {
   };
   equation = [];
 };
+
+function appendOperator(operator) {
+  if (!lastIsAnOperator) {
+    equation.push(calculatorValue);
+    calculatorValue = "";
+    equation.push(operator);
+    display.textContent += getOperatorSymbol(operator);
+    lastIsAnOperator = true;
+  };
+};
+
+function getOperatorSymbol(operator) {
+  if (operator == add) return "+";
+  if (operator == subtract) return "-";
+  if (operator == multiply) return "*";
+  if (operator == divide) return "/";
+}
