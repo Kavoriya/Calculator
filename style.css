@@ -1,11 +1,17 @@
 :root {
-  --calculator-width: 350px;
+  --button-width: 83px;
+  --button-height: 44px;
 }
 
 #calculator {
   display: flex;
   flex-direction: column;
   width: 350px;
+  margin: auto;
+}
+
+#calculator:hover > #display {
+  box-shadow: 0px 1px 1px inset;
 }
 
 #display {
@@ -13,33 +19,50 @@
   height: 60px;
   border: 1px solid black;
   box-sizing: border-box;
+  padding: 20px 10px 15px 10px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 28px;  
+  text-align: right;
 }
 
 #main-section {
   display: flex;
   justify-content: space-between;
-}
-
-#digits-section, #operators-section {
-  display: flex;
   flex-wrap: wrap;
-}
-
-#digits-section {
-  width: 249px;
-  flex-direction: row-reverse;
-}
-
-#operators-section {
-  width: 83px;
+  gap: 6px;
 }
 
 button {
-  width: 83px;
-  height: 34px;
+  width: var(--button-width);
+  height: var(--button-height);
   box-sizing: border-box;
+  flex: 1 0 21%;
+  border-radius: 4px;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+#btn-equals {
+  background-color: #4285f4;
+  color: white;
 }
 
 #btn-ac {
-  margin-left: auto;
+  background-color: rgba(253, 62, 62, 0.808);
+}
+
+.operator {
+  background-color: #cacaca;
+}
+
+#btn-equals, .operator {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+#buffer {
+  width: 261px;
 }
