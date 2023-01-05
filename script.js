@@ -25,7 +25,7 @@ digits.forEach(digit => {
 });
 
 allButtons.forEach(digit => {
-  ["mousedown, touchstart"].forEach(function(e) {
+  ["mousedown", "touchstart"].forEach(function(e) {
     digit.addEventListener(e, () => {
       display.style.border = "1px solid #4285f4";
       display.style.boxShadow = "none";
@@ -34,7 +34,7 @@ allButtons.forEach(digit => {
 });
 
 allButtons.forEach(digit => {
-  ["mouseup, touchend"].forEach(function(e) {
+  ["mouseup", "touchend"].forEach(function(e) {
     digit.addEventListener(e, () => {
       display.style.border = "1px solid black";
     })
