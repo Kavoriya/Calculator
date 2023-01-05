@@ -25,15 +25,19 @@ digits.forEach(digit => {
 });
 
 allButtons.forEach(digit => {
-  digit.addEventListener("mousedown", () => {
-    display.style.border = "1px solid #4285f4";
-    display.style.boxShadow = "none";
+  ["mousedown, touchstart"].forEach(function(e) {
+    digit.addEventListener(e, () => {
+      display.style.border = "1px solid #4285f4";
+      display.style.boxShadow = "none";
+    })
   })
 });
 
 allButtons.forEach(digit => {
-  digit.addEventListener("mouseup", () => {
-    display.style.border = "1px solid black";
+  ["mouseup, touchend"].forEach(function(e) {
+    digit.addEventListener(e, () => {
+      display.style.border = "1px solid black";
+    })
   })
 });
 
