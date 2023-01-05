@@ -10,11 +10,30 @@ let domDigits = document.getElementsByClassName("digit");
   digits.push(item)
 });
 
+let allButtons = [];
+let domAllButtons = document.getElementsByTagName("button");
+[...domAllButtons].forEach(item => {
+  allButtons.push(item)
+});
+
 digits.forEach(digit => {
   digit.addEventListener("click", () => {
     calculatorValue += digit.value;
     display.textContent += digit.value;
     lastIsAnOperator = false;
+  })
+});
+
+allButtons.forEach(digit => {
+  digit.addEventListener("mousedown", () => {
+    display.style.border = "1px solid #4285f4";
+    display.style.boxShadow = "none";
+  })
+});
+
+allButtons.forEach(digit => {
+  digit.addEventListener("mouseup", () => {
+    display.style.border = "1px solid black";
   })
 });
 
@@ -40,7 +59,7 @@ divideButton.addEventListener("click", () => {
 
 let dotButton = document.querySelector("#btn-dot");
 dotButton.addEventListener("click", () => {
-  if (!calculatorValue.split("").includes(".")) { //user can't add . twice in a row
+  if (!calculatorValue.split("").includes(".")) {
     calculatorValue += ".";
     display.textContent += ".";
   };

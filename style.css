@@ -45,13 +45,33 @@ button {
   font-size: 16px;
 }
 
+button:hover {
+  box-shadow: 0 0 0 1px black;
+}
+
+button:active {
+  background-color: white;
+}
+
 #btn-equals {
   background-color: #4285f4;
   color: white;
 }
 
+#btn-equals:active {
+  color: #4285f4;
+  background-color: white;
+  box-shadow: 0 0 0 1px #4285f4;
+}
+
 #btn-ac {
   background-color: rgba(253, 62, 62, 0.808);
+}
+
+#btn-ac:active {
+  background-color: white;
+  color: rgba(253, 62, 62, 0.808);
+  box-shadow: 0 0 0 1px rgba(253, 62, 62, 0.808);
 }
 
 .operator {
