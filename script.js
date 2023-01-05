@@ -40,10 +40,10 @@ divideButton.addEventListener("click", () => {
 
 let dotButton = document.querySelector("#btn-dot");
 dotButton.addEventListener("click", () => {
-  if (calculatorValue.split("")[calculatorValue.length - 1] != ".") { //user can't add . twice in a row
+  if (!calculatorValue.split("").includes(".")) { //user can't add . twice in a row
     calculatorValue += ".";
     display.textContent += ".";
-  }
+  };
 });
 
 let equalsButton = document.querySelector("#btn-equals"); 
